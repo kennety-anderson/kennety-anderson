@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class InputText extends StatefulWidget {
-  InputText(
+class InputForm extends StatefulWidget {
+  InputForm(
       {this.labelText, this.keyBordType, this.onChange, this.obscureText});
 
-  final labelText;
+  final String labelText;
   final keyBordType;
   final obscureText;
   final Function onChange;
 
   @override
-  _InputTextState createState() => _InputTextState();
+  _InputFormState createState() => _InputFormState();
 }
 
-class _InputTextState extends State<InputText> {
+class _InputFormState extends State<InputForm> {
   final FocusNode _focusNode = FocusNode();
 
   // Inicia o estado com um listener
@@ -39,15 +39,16 @@ class _InputTextState extends State<InputText> {
       focusNode: _focusNode, //Altera a cor do label se o input estiver focado
       cursorColor: Colors.green,
       keyboardType: widget.keyBordType,
+      textInputAction: TextInputAction.done,
       obscureText: widget.obscureText == true ? true : false,
       style: TextStyle(color: Colors.white, fontSize: 20),
       decoration: InputDecoration(
         labelText: widget.labelText,
         labelStyle: TextStyle(
-          color: _focusNode.hasFocus ? Color(0xFFf7497d) : Colors.white,
+          color: _focusNode.hasFocus ? Colors.blue : Colors.white,
         ),
-        focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFFf7497d))),
+        focusedBorder:
+            UnderlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
         enabledBorder:
             UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
       ),
